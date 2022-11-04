@@ -72,4 +72,4 @@ setTimeout(function() {
         }
         document.getElementById("result").innerHTML = `I numeri da indovinare erano: ${numbGen}`
     }, 1000);
-}, 3000);
+}, 30000);
