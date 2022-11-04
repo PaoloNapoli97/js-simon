@@ -25,6 +25,20 @@ function numControl(cycle){
     console.log(`Numeri generati dal computer: ${numbGen}`);
 }
 
+// Funzione di controllo vittoria del giocatore3
+
+function arrayCompare(numbGen, winnerNumbers){
+    if(numbGen.length !== winnerNumbers.length){
+        return false;
+    }
+    // for ( let i = 0; i < numbGen; i++){
+    //     if (numbGen[i] !== winnerNumbers[i]){
+    //         return false;
+    //     }
+    // }
+    return true;
+}
+
 // MAIN
 
 numControl(5);
@@ -38,15 +52,24 @@ setTimeout(function() {
             playerList.push(playerNumber);        
             if (playerList[i] == numbGen [i]){
                 winnerNumbers.push(playerNumber);
+                console.log("vero")
+            }
+            else{ 
+                console.log("falso")
             }
         }
         console.log(`Numeri inseriti dal giocatore: ${playerList}`);
         console.log(`Numeri inseriti dal giocatore corretti sono: ${winnerNumbers}`);
-        if (winnerNumbers === numbGen) {
+
+        if (arrayCompare(numbGen, winnerNumbers) === true) {
             console.log(`Hai vinto! ${winnerNumbers} ${numbGen}`);
+            document.getElementById("guessed").innerHTML = `Hai vinto! Hai indovinato tutti i numeri: ${winnerNumbers}`;
+
         }
-        else{
-            console.log(`Oh no hai perso... ${winnerNumbers7} ${numbGen}`);
+        else if (arrayCompare(numbGen, winnerNumbers) === false){
+            console.log(`Oh no hai perso... ${winnerNumbers} ${numbGen}`);
+            document.getElementById("guessed").innerHTML = `Oh no, hai perso, hai indovinato solo ${winnerNumbers.length} numeri: ${winnerNumbers}`;
         }
+        document.getElementById("result").innerHTML = `I numeri da indovinare erano: ${numbGen}`
     }, 1000);
 }, 3000);
